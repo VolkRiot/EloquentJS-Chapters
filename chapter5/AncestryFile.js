@@ -44,7 +44,7 @@ ancestry.forEach(function(person) {
   byName[person.name] = person;
 });
 
-console.log(byName);
+console.log(byName["Philibert Haverbeke"]);
 
 // This makes sure the data is exported in node.js —
 // `require(./path/to/ancestry.js)` will get you the array.
