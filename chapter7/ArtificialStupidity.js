@@ -22,15 +22,17 @@ Tweak it some more if necessary.*/
 
 function SmartPlantEater() {
   this.energy = 20;
+  this.direction = "e";
 }
 
 SmartPlantEater.prototype.act = function(view) {
   var space = view.find(" ");
-  if (this.energy > 70 && space)
+  if (this.energy > 100 && space)
     return {type: "reproduce", direction: space};
-  var plant = view.find("*");
-  if (plant && this.energy < 50)
-    return {type: "eat", direction: plant};
-  if (space)
-    return {type: "move", direction: space};
+  var plant = view.findAll("*");
+  if (plant.length > 1)
+    return {type: "eat", direction: randomElement(plant)};
+  if (view.look(this.direction) != " " && space)
+      this.direction = space;
+  return {type: "move", direction: space};
 };
