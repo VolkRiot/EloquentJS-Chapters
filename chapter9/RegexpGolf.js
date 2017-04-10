@@ -25,27 +25,27 @@ verify(/ca[rt]/,
        ["my car", "bad cats"],
        ["camper", "high art"]);
 
-verify(/.../,
+verify(/pr?op/,
        ["pop culture", "mad props"],
        ["plop"]);
 
-verify(/.../,
+verify(/ferr[y|et|ari]/,
        ["ferret", "ferry", "ferrari"],
        ["ferrum", "transfer A"]);
 
-verify(/.../,
+verify(/.ious/,
        ["how delicious", "spacious room"],
        ["ruinous", "consciousness"]);
 
-verify(/.../,
+verify(/\s[.|;|:|,]/,
        ["bad punctuation ."],
        ["escape the dot"]);
 
-verify(/.../,
+verify(/\w{7,}/,
        ["hottentottententen"],
        ["no", "hotten totten tenten"]);
 
-verify(/.../,
+verify(/\b[a-df-z]+\b/i,
        ["red platypus", "wobbling nest"],
        ["earth bed", "learning ape"]);
 
