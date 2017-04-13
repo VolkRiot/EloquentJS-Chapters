@@ -36,39 +36,33 @@ setting their style.textAlign property to "right".*/
     var table = document.createElement('table');
     var row = document.createElement('tr');
 
-    for(var i = 0; i < Object.keys(data[0]).length; i++){
-		var th = document.createElement('th');
-      	var text = document.createTextNode(Object.keys(data[0])[i]);
-      	th.appendChild(text);
-      	row.appendChild(th);
-	}
+    var fields = Object.keys(data[0])
+
+    fields.forEach(function(field){
+      var th = document.createElement('th');
+      th.appendChild(document.createTextNode(field))
+      row.appendChild(th)
+    })
 
     table.appendChild(row);
 
-    for(var i = 0; i < data.length; i++){
+    data.forEach(function(item){
+		var newRow = document.createElement('tr');
+        var td = document.createElement('td');
+	})
 
-      var newRow = document.createElement('tr');
 
-      var nameText = document.createTextNode(data[i].name);
-      var heightText = document.createTextNode(data[i].height);
-      var countryText = document.createTextNode(data[i].country);
-
-      var td1 = document.createElement('td');
-      td1.appendChild(nameText);
-
-      var td2 = document.createElement('td');
-      td2.appendChild(heightText);
-
-      var td3 = document.createElement('td');
-      td3.appendChild(countryText);
-
-      newRow.appendChild(td1);
-      newRow.appendChild(td2);
-      newRow.appendChild(td3);
-
-      table.appendChild(newRow);
-
-	}
+    data.forEach(function(object) {
+      var row = document.createElement("tr");
+      fields.forEach(function(field) {
+        var cell = document.createElement("td");
+        cell.textContent = object[field];
+        if (typeof object[field] == "number")
+          cell.style.textAlign = "right";
+        row.appendChild(cell);
+      });
+      table.appendChild(row);
+    });
 
     return table;
   }
